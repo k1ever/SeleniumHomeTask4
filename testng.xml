@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="All tests" verbose="1">
+
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+	</listeners>
+
+
+	<test name="Create Post">
+		<classes>
+			<class name="CreatePost" />
+		</classes>
+	</test>
+	<test name="Delete All Posts">
+		<classes>
+			<class name="DeleteAll" />
+		</classes>
+	</test>
+	<test name="Edit Post">
+		<classes>
+			<class name="EditPost" />
+		</classes>
+	</test>
+</suite>

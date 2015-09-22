@@ -8,17 +8,16 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by vbalaban on 2/23/2015.
  */
-public class LoginPage extends WebdriverExtension{
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
+public class LoginPage extends WebdriverExtension {
 
     protected By usernameTextbox = By.id("user_login");
     protected By passwordTextbox = By.id("user_pass");
     protected By loginButton = By.id("wp-submit");
 
-    @Override
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
+
     public void Open() {
         driver.navigate().to(ApplicationSettings.baseUrl);
     }
