@@ -33,7 +33,7 @@ public class NewPostPage extends WebdriverExtension {
     }
 
     public void ClickOnPublishButon() {
-        //waitForElementEnabled(By.id("publish"));
+        waitForElementEnabled(By.id("publish"));
         driver.findElement(By.id("publish")).click();
     }
 

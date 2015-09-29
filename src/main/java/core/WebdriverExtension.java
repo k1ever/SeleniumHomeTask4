@@ -1,8 +1,11 @@
 package core;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class WebdriverExtension {
 
@@ -29,5 +32,24 @@ public abstract class WebdriverExtension {
         } catch (NullPointerException e) {
             return false;
         }
+    }
+
+    public static boolean isElementPresent(WebDriver driver, By by) {
+        try {
+            driver.findElement(by);//if it does not find the element throw NoSuchElementException, which calls "catch(Exception)" and returns false;
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void waitForElementEnabled(final By by) {
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                return !driver.findElement(by).getAttribute("class").contains("disabled");
+            }
+        });
     }
 }
