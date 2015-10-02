@@ -17,9 +17,12 @@ public class AllPostsPage extends WebdriverExtension {
         super(driver);
     }
 
-//    protected By postTitle = By.id("title");
+
     protected By PostsMenu = By.id("menu-posts");
     protected By AddNewSubMenu = By.xpath("//a[text()='All Posts']");
+    protected By postTitle = By.className("row-title");
+    protected By EditPostButton = By.xpath("//a[text()='Edit']");
+    protected By EditedPostTitle = By.id("title");
 
     public void Open() {
         MoveMouseOverElement(PostsMenu);
@@ -27,12 +30,19 @@ public class AllPostsPage extends WebdriverExtension {
         MoveMouseOverElementAndClick(AddNewSubMenu);
     }
 
-//    public void ProvidePostTitle(String text) {
-//        driver.findElement(postTitle).sendKeys(text);
-//    }
+    public void EditPost(){
+        MoveMouseOverElement(postTitle);
+        MoveMouseOverElementAndClick(EditPostButton);
+    }
 
-    public void ProvidePostBody(String text){
+    public void ProvideEditedPostTitle(String text) {
+        driver.findElement(EditedPostTitle).clear();
+        driver.findElement(EditedPostTitle).sendKeys(text);
+    }
+
+    public void ProvideEditedPostBody(String text){
         driver.switchTo().frame("content_ifr");
+        driver.switchTo().activeElement().clear();
         driver.switchTo().activeElement().sendKeys(text);
         driver.switchTo().defaultContent();
     }
