@@ -3,6 +3,8 @@ package pageObjects;
 import core.WebdriverExtension;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
 
@@ -16,7 +18,6 @@ public class AllPostsPage extends WebdriverExtension {
     public AllPostsPage(WebDriver driver) {
         super(driver);
     }
-
 
     protected By PostsMenu = By.id("menu-posts");
     protected By AddNewSubMenu = By.xpath("//a[text()='All Posts']");

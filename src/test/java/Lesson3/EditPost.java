@@ -5,6 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.PostViewPage;
 
+import java.util.Date;
+
 import static core.WebdriverExtension.isElementContainsText;
 
 /**
@@ -17,11 +19,13 @@ public class EditPost extends BaseTest {
 
         allPostsPage.Open();
         allPostsPage.EditPost();
-        allPostsPage.ProvideEditedPostTitle("Edited Test text for Presentation");
-        allPostsPage.ProvideEditedPostBody("Edited Test Body text for presentation");
+
+        Date date = new Date();
+        allPostsPage.ProvideEditedPostTitle("Edited at " + date.toString() + " Test text for Presentation");
+        allPostsPage.ProvideEditedPostBody("Edited at " + date.toString() + " Test Body text for Presentation");
         allPostsPage.ClickOnPublishButon();
-        newPostPage.ClickOnViewPostLink();
-        Assert.assertTrue(isElementContainsText(PostViewPage.PostTitle, "Edited"));
+        allPostsPage.ClickOnViewPostLink();
+        Assert.assertTrue(isElementContainsText(PostViewPage.PostTitle, date.toString()));
 
     }
 
