@@ -7,17 +7,19 @@ import org.openqa.selenium.WebDriver;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by vbalaban on 2/23/2015.
+ * Created by svoitenko on 02 Oct 2015.
  */
-public class NewPostPage extends WebdriverExtension {
 
-    public NewPostPage(WebDriver driver) {
+
+public class AllPostsPage extends WebdriverExtension {
+
+    public AllPostsPage(WebDriver driver) {
         super(driver);
     }
 
-    protected By postTitle = By.id("title");
+//    protected By postTitle = By.id("title");
     protected By PostsMenu = By.id("menu-posts");
-    protected By AddNewSubMenu = By.xpath("//a[text()='Add New']");
+    protected By AddNewSubMenu = By.xpath("//a[text()='All Posts']");
 
     public void Open() {
         MoveMouseOverElement(PostsMenu);
@@ -25,9 +27,9 @@ public class NewPostPage extends WebdriverExtension {
         MoveMouseOverElementAndClick(AddNewSubMenu);
     }
 
-    public void ProvidePostTitle(String text) {
-        driver.findElement(postTitle).sendKeys(text);
-    }
+//    public void ProvidePostTitle(String text) {
+//        driver.findElement(postTitle).sendKeys(text);
+//    }
 
     public void ProvidePostBody(String text){
         driver.switchTo().frame("content_ifr");

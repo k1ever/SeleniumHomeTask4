@@ -5,10 +5,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import pageObjects.LoginPage;
-import pageObjects.NewPostPage;
-import pageObjects.PostViewPage;
-import pageObjects.PostsPage;
+import pageObjects.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,6 +20,8 @@ public class BaseTest {
     public static NewPostPage newPostPage = new NewPostPage(getCurrentDriver());
     public static PostViewPage postViewPage = new PostViewPage(getCurrentDriver());
     public static PostsPage postsPage = new PostsPage(getCurrentDriver());
+    public static AllPostsPage allPostsPage = new AllPostsPage(getCurrentDriver());
+
 
     protected static WebDriver getCurrentDriver() {
         if (driver == null) {
@@ -43,8 +42,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
-    @AfterTest
-    public void TearDown(){
-        driver.quit();
-    }
+//    @AfterTest
+//    public void TearDown(){
+//        driver.quit();
+//    }
 }

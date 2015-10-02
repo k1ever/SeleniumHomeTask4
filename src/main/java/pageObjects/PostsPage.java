@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by vbalaban on 3/3/2015.
  */
@@ -23,6 +25,7 @@ public class PostsPage extends WebdriverExtension {
         public static void Select() {
 
             MoveMouseOverElement(By.id("menu-posts"));
+            driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS); //too slow to appear for click
             MoveMouseOverElementAndClick(By.linkText("All Posts"));
         }
     }
